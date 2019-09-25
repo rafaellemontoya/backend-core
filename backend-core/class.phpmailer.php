@@ -1,4 +1,5 @@
 <?php
+ header("Access-Control-Allow-Origin: *");
 /**
  * PHPMailer - PHP email creation and transport class.
  * PHP Version 5

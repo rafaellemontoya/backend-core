@@ -1,5 +1,7 @@
 <?php
-function enviar_mail($nombre, $apellidos, $email) {
+function enviar_mail($nombre, $apellidos, $email)
+ {
+   header("Access-Control-Allow-Origin: *");
 
     require("class.phpmailer.php");
     require("class.smtp.php");

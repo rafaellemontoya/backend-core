@@ -1,10 +1,10 @@
 
 <?php
-
+ header("Access-Control-Allow-Origin: *");
 function insertar($nombre,$apellidos,$empresa,$puesto,$email,$telefono)
 {
   $respuesta="Se conecto";
-  $stmt = $connect->prepare("INSERT INTO `registro_core` (
+  $stmt = $connect->prepare("INSERT INTO `talleres_core_2019` (
     `nombre`, `apellidos`,`empresa`, `puesto`, `email`,`telefono`
   ) VALUES (?,?,?,?,?,?)");
 

@@ -1,5 +1,5 @@
 <?php
-
+ header("Access-Control-Allow-Origin: *");
   $body = json_decode(file_get_contents("php://input"), true);
   // $nombre = $body["nombre"];
   $email = filter_var($body["email"], FILTER_SANITIZE_STRING);

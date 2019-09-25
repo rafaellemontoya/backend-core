@@ -1,4 +1,5 @@
 <?
+ header("Access-Control-Allow-Origin: *");
 header('Content-type: application/vnd.ms-excel');
 header("Content-Disposition: attachment; filename=prueba.xls");
 header("Pragma: no-cache");

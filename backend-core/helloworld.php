@@ -1,5 +1,5 @@
 <?
-
+ header("Access-Control-Allow-Origin: *");
 $DB_HOST = "localhost";
 $DB_USER = "themytco_userjna";
 $DB_PASS = "JnA19DB";
