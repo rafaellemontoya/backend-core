@@ -1,5 +1,5 @@
 <?php
-
+ header("Access-Control-Allow-Origin: *");
 include ("conexion.php");
 
   if($connect->connect_errno){

@@ -1,7 +1,7 @@
 <?
 function buscarInfo()
 include ("conexion.php");
-
+ header("Access-Control-Allow-Origin: *");
   if($connect->connect_errno){
 
     $respuesta = "Error en la conexión";

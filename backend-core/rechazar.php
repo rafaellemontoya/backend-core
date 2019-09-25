@@ -1,7 +1,7 @@
 <?php
 
 
-
+ header("Access-Control-Allow-Origin: *");
 $body = json_decode(file_get_contents("php://input"), true);
 
 
