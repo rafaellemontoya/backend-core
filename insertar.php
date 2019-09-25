@@ -1,5 +1,16 @@
 
 <?php
+ header("Access-Control-Allow-Origin: *");
+ $datos=$_GET['datos'];
+ $datos = json_decode($datos,true);
+ // $nombre = $body["nombre"];
+ $nombre = filter_var($datos["nombre"], FILTER_SANITIZE_STRING);
+ $apellidos = filter_var($datos["apellidos"], FILTER_SANITIZE_STRING);
+ $empresa = filter_var($datos["empresa"], FILTER_SANITIZE_STRING);
+ $telefono = filter_var($datos["telefono"], FILTER_SANITIZE_STRING);
+ $taller = filter_var($datos["taller"], FILTER_SANITIZE_STRING);
+insertar($nombre,$apellidos,$empresa,$puesto,$email,$telefono);
+$query = "SELECT * FROM `registro_core` WHERE NOT estado=2";
 
 function insertar($nombre,$apellidos,$empresa,$puesto,$email,$telefono)
 {
