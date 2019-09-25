@@ -1,6 +1,7 @@
 
 <?php
  header("Access-Control-Allow-Origin: *");
+ include ("conexion.php");
  $datos=$_GET['datos'];
  $datos = json_decode($datos,true);
  // $nombre = $body["nombre"];
@@ -10,8 +11,8 @@
  $telefono = filter_var($datos["telefono"], FILTER_SANITIZE_STRING);
  $taller = filter_var($datos["taller"], FILTER_SANITIZE_STRING);
 insertar($nombre,$apellidos,$empresa,$puesto,$email,$telefono);
-$query = "SELECT * FROM `registro_core` WHERE NOT estado=2";
-
+$query = "SELECT `id` FROM `talleres_core_2019`";
+$result = mysqli_query($conexion, $query);
 function insertar($nombre,$apellidos,$empresa,$puesto,$email,$telefono)
 {
   $respuesta="Se conecto";
