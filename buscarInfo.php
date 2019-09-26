@@ -1,7 +1,7 @@
 <?
-
-$connect = new mysqli("localhost", "themytco_userjna", "JnA19DB", "themytco_jna19" );
-
+function buscarInfo()
+include ("conexion.php");
+ header("Access-Control-Allow-Origin: *");
   if($connect->connect_errno){
 
     $respuesta = "Error en la conexión";
@@ -11,7 +11,7 @@ $connect = new mysqli("localhost", "themytco_userjna", "JnA19DB", "themytco_jna1
 
 
       $json_array = array();
-                              $query = "SELECT * FROM `registro` WHERE NOT estado=2";
+                              $query = "SELECT * FROM `registro_core` WHERE NOT estado=2";
                               $result= mysqli_query($connect, $query);
                               while($row= mysqli_fetch_assoc($result)){
                                 $json_array[] = $row;
@@ -23,5 +23,6 @@ $connect = new mysqli("localhost", "themytco_userjna", "JnA19DB", "themytco_jna1
                                     $json_array
 
                                 );
+return $jason_array
                             }
 ?>
