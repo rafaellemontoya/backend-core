@@ -1,7 +1,8 @@
 <?php
-function enviar_mail($nombre, $apellidos, $email)
+header("Access-Control-Allow-Origin: *");
+function enviar_mail($nombre, $apellidos, $email, $id_guardado, $taller )
  {
-   header("Access-Control-Allow-Origin: *");
+
 
     require("class.phpmailer.php");
     require("class.smtp.php");
@@ -28,26 +29,27 @@ function enviar_mail($nombre, $apellidos, $email)
 
     // $mail->SMTPSecure = '';
     $mail->From = $smtpUsuario; // Email desde donde env�o el correo.
-    $mail->FromName = "Coldwell Banker";
+    $mail->FromName = "CoRe Ciudades Vivibles y Amables 2019 ";
     $mail->AddAddress($email);
 
-    $mail->Subject = "Pre registro Junta Nacional de Afiliados 2019"; // Este es el titulo del email.
+    $mail->Subject = "Registro al evento "; // Este es el titulo del email.
     $mensajeHtml = nl2br($mensaje);
 
   	// $mail->WordWrap = 50;
     $track_code = md5(rand());
 
+    $srcQR = '<img src="https://www.registro-eventos.com/core/2019/backend/qrgenerator/generate.php?text='.$id_guardado.'" alt="" width="150" height="150" align=center class=float-center>';
 
 
       // $message_body = $_POST['email_body'];
   	// $message_body .= '<img src="'.$base_url.'email_track.php?code='.$track_code.'" width="1" height="1" />';
   	// $mail->Body = $message_body;
-    $base_url = "https://themyt.com/frankie/email_track.php?id=$id_guardado";
+    // $base_url = "https://themyt.com/frankie/email_track.php?id=$id_guardado";
     $mail->Body = '
 
     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
     <HTML style="BACKGROUND: #f3f3f3" lang=en xml:lang="en"
-    xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>Junta Nacional de Afiliados | 24 al 26 de Octubre, 2019</TITLE>
+    xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>CoRe Ciudades Vivibles y Amables | 17 de Octubre, 2019</TITLE>
     <META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
     <META name=viewport content=width=device-width>
     <META name=GENERATOR content="MSHTML 8.00.6001.23588">
@@ -58,7 +60,7 @@ function enviar_mail($nombre, $apellidos, $email)
       <tr>
         <td width="602" bgcolor="#bbbbbb" style="padding-left:1px; padding-right:1px; padding-top:1px;"><table width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
           <tr>
-            <td width="546"><img src="https://www.registro-eventos.com/cbm/jna19/registro_html/images/banner_750_x_250.jpg" width="750" height="250"></td>
+            <td width="546"><img src="https://www.registro-eventos.com/core/2019/registro_html/images/banner-confirma_750_x_200.jpg" width="750" height="250"></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
@@ -77,24 +79,74 @@ function enviar_mail($nombre, $apellidos, $email)
           <tr>
             <td><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
               <tr>
-                <td><span style="font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#444444; margin-top:5px; margin-bottom:5px;">Has quedado Pre-registrado(a) a <strong>Junta Nacional de Afiliados </strong><br>
-                  <br>
-                  Se validar&aacute;n tus datos y te notificaremos el estatus de tu registro a trav&eacute;s de la cuenta de correo electr&oacute;nico que nos has proporcionado.</span></td>
+                <td><span style="font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#444444; margin-top:5px; margin-bottom:5px;">Se ha confirmado tu asistencia al  evento: <strong>CoRe Ciudades Vivibles y Amables 2019 </strong></span></td>
               </tr>
             </table></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
           </tr>
+           <tr>
+            <td> <HR style="BORDER-BOTTOM: #1B1A18 2px solid; BORDER-LEFT: #1B1A18 2px solid; MARGIN: 0px 15px; BORDER-TOP: #1B1A18 2px solid; BORDER-RIGHT: #1B1A18 2px solid"></td>
+          </tr>
+           <tr>
+            <td>&nbsp;</td>
+          </tr>
+           <tr>
+            <td><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td><div align="center"><span style="font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#444444; margin-top:5px; margin-bottom:5px;">Para agilizar tu registro, te pedimos llevar el d&iacute;a del evento el siguiente código QR:</span></div></td>
+              </tr>
+            </table>
+              <div align="center"></div></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="center"><span style="MIN-WIDTH: 532px; WIDTH: 100%">'.$srcQR.'</span></div></td>
+          </tr>
+           <tr>
+            <td>&nbsp;</td>
+          </tr>
+
+
 
           <tr>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td> <HR style="BORDER-BOTTOM: #01529a 2px solid; BORDER-LEFT: #01529a 2px solid; MARGIN: 0px 15px; BORDER-TOP: #01529a 2px solid; BORDER-RIGHT: #01529a 2px solid"></td>
+            <td> <HR style="BORDER-BOTTOM: #1B1A18 2px solid; BORDER-LEFT: #1B1A18 2px solid; MARGIN: 0px 15px; BORDER-TOP: #1B1A18 2px solid; BORDER-RIGHT: #1B1A18 2px solid"></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td><div align="center"><span style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#444444; margin-top:5px; margin-bottom:5px;"><strong>Detalles de Registro</strong></span></div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td><span style="font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#444444; margin-top:5px; margin-bottom:5px;">N&uacute;mero de Registro: <strong>'.$id_guardado.' </strong><br>
+                  <br>
+                  Nombre: <strong> '.$nombre.' '.$apellidos.'</strong><br>
+                  <br>
+                  Email: <strong>'.$email.'</strong><br>
+                   <br>
+                  Taller: <strong>'.$taller.'</strong><br>
+
+                  <br>
+                </span></td>
+              </tr>
+            </table></td>
+          </tr>
+
+          <tr>
+            <td><HR style="BORDER-BOTTOM: #1B1A18 2px solid; BORDER-LEFT: #1B1A18 2px solid; MARGIN: 0px 15px; BORDER-TOP: #1B1A18 2px solid; BORDER-RIGHT: #1B1A18 2px solid"></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
@@ -112,20 +164,19 @@ function enviar_mail($nombre, $apellidos, $email)
           <tr>
             <td><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
               <tr>
-                <td width="51%" valign="top"><span style="font-family:Helvetica, sans-serif;font-size:13px;color:#444444; margin-top:5px; margin-bottom:5px;"><strong>Evento </strong><br>
-                    <strong>Junta Nacional de Afiliados 2019</strong><br>
+                <td width="51%" valign="top"><span style="font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#444444; margin-top:5px; margin-bottom:5px;"><strong>Evento </strong><br>
+                    <strong>CoRe Ciudades Vivibles y Amables 2019</strong><br>
                   <br>
                   <strong>Fecha</strong> <br>
-                  24 - 26 Octubre, 2019 <br>
+                   Jueves 17 Octubre, 2019 <br>
                   <br>
                   <strong>Horario</strong> <br>
-                  07:00 a 22:00 hrs.</span></td>
+                  09:00 a 18:00 hrs.</span></td>
                 <td width="49%" valign="top"><span style="font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#444444; margin-top:5px; margin-bottom:5px;"><strong>Lugar</strong> <br>
-                  Hotel Quinta Real Puebla<br>
+                 Museo Kaluz<br>
                   <br>
                   <strong>Direcci&oacute;n</strong> <br>
-                  7 Poniente N&deg; 105, Centro Hist&oacute;rico, C.P. 72000 <br>
-                  Puebla, Puebla </span></td>
+                   Av. Hidalgo No. 85, Centro Hist&oacute;rico de la Ciudad de M&eacute;xico, C.P. 06300, CDMX. </span></td>
               </tr>
             </table></td>
           </tr>
@@ -139,11 +190,11 @@ function enviar_mail($nombre, $apellidos, $email)
                 <TR
                                     style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: top; PADDING-TOP: 0px">
                   <TD
-                                    style="BORDER-BOTTOM: #01529a 0px solid; TEXT-ALIGN: left; BORDER-LEFT: #01529a 0px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-COLLAPSE: collapse !important; FONT-FAMILY: Helvetica,Arial,sans-serif; WORD-WRAP: break-word; BACKGROUND: #01529a; COLOR: #fefefe; FONT-SIZE: 13px; VERTICAL-ALIGN: top; BORDER-TOP: #01529a 0px solid; FONT-WEIGHT: 300; BORDER-RIGHT: #01529a 0px solid; PADDING-TOP: 0px; -moz-hyphens: auto; -webkit-hyphens: auto; hyphens: auto"><CENTER style="MIN-WIDTH: 0px; WIDTH: 100%"
+                                    style="BORDER-BOTTOM: #1B1A18 0px solid; TEXT-ALIGN: left; BORDER-LEFT: #1B1A18 0px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-COLLAPSE: collapse !important; FONT-FAMILY: Helvetica,Arial,sans-serif; WORD-WRAP: break-word; BACKGROUND: #1B1A18; COLOR: #fefefe; FONT-SIZE: 13px; VERTICAL-ALIGN: top; BORDER-TOP: #1B1A18 0px solid; FONT-WEIGHT: 300; BORDER-RIGHT: #1B1A18 0px solid; PADDING-TOP: 0px; -moz-hyphens: auto; -webkit-hyphens: auto; hyphens: auto"><CENTER style="MIN-WIDTH: 0px; WIDTH: 100%"
                                     data-parsed="">
                     <A
-                                    style="BORDER-BOTTOM: #01529a 0px solid; TEXT-ALIGN: center; BORDER-LEFT: #01529a 0px solid; PADDING-BOTTOM: 8px; LINE-HEIGHT: 1.5; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: 0px; DISPLAY: inline-block; FONT-FAMILY: Helvetica,Arial,sans-serif; COLOR: #fefefe; FONT-SIZE: 15px; BORDER-TOP: #01529a 0px solid; FONT-WEIGHT: 300; BORDER-RIGHT: #01529a 0px solid; TEXT-DECORATION: none; PADDING-TOP: 8px; border-radius: 3px"
-                                    class=float-center href="https://www.registro-eventos.com/cbm/jna19/registro_html/jna2019.ics" target="_blank" align="center">Agregar a mi calendario</A>
+                                    style="BORDER-BOTTOM: #1B1A18 0px solid; TEXT-ALIGN: center; BORDER-LEFT: #1B1A18 0px solid; PADDING-BOTTOM: 8px; LINE-HEIGHT: 1.5; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: 0px; DISPLAY: inline-block; FONT-FAMILY: Helvetica,Arial,sans-serif; COLOR: #fefefe; FONT-SIZE: 15px; BORDER-TOP: #1B1A18 0px solid; FONT-WEIGHT: 300; BORDER-RIGHT: #1B1A18 0px solid; TEXT-DECORATION: none; PADDING-TOP: 8px; border-radius: 3px"
+                                    class=float-center href="https://www.registro-eventos.com/core/2019/CoRe2019.ics" target="_blank" align="center">Agregar a mi calendario</A>
                   </CENTER></TD>
                 </TR>
               </TBODY>
@@ -156,7 +207,7 @@ function enviar_mail($nombre, $apellidos, $email)
             <td>&nbsp;</td>
           </tr>
           <tr>
-            <td><img src="https://www.registro-eventos.com/cbm/jna19/registro_html/images/footer_750_x_30.jpg" width="750" height="30"></td>
+            <td><img src="https://www.registro-eventos.com/core/2019/registro_html/images/footer_600_x_30.jpg" width="750" height="30"></td>
           </tr>
           <tr>
             <td><div align="center">&nbsp;</div></td>
@@ -169,6 +220,7 @@ function enviar_mail($nombre, $apellidos, $email)
       </table>
     </BODY>
     </HTML>
+
 
 '; // Texto del email en formato HTML
 
@@ -201,6 +253,7 @@ function enviar_mail($nombre, $apellidos, $email)
     return array(
         'respuesta' => $respuesta,
         'estado_respuesta' => $estado_respuesta,
+        'email_envio'=>$email
       );
   }
 ?>
